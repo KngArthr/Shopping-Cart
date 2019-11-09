@@ -15,8 +15,9 @@ public class MainClass {
 		String fileName2 = "";
 		String bankAccountCheck ="";
 		double bankAccount = 0;
+		double test = 0;
 		
-		//fileName = "groceryList5";
+		//fileName = "grocerList5";
 		//runProgram.writeItemsFile(fileName);
 		
 		
