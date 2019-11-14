@@ -1,6 +1,7 @@
 package assignmentThree;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FilterData extends SortClass {
 	
@@ -32,7 +33,20 @@ public class FilterData extends SortClass {
 				
 	}
 	//Check array for duplicates item based on how much array is filled and which new string is being added.
-	public boolean checkDuplicate(ArrayList<ItemClass> itemList, String line) {
+	public String checkItemDuplicate(ArrayList<ItemClass> itemList, String stringInput, int slot) {
+		Scanner scanData = new Scanner(System.in);
+		if(slot > 0) {
+		while(checkDuplicate(itemList, stringInput)) {
+			System.out.println("This is a duplicate. Please re-enter the name.");
+			stringInput = scanData.nextLine();
+		}
+		//scanData.close();
+		}
+		return stringInput;
+	}
+	
+	
+	public boolean checkDuplicate(ArrayList<ItemClass> itemList, String stringInput) {
 		
 		boolean isDuplicate = false;
 		
@@ -40,7 +54,7 @@ public class FilterData extends SortClass {
 			/*System.out.println ("Iteration " + z);
 			System.out.println ("Previous Item Name " + itemList[z].getItemName());
 			System.out.println ("New Item Name " + line);*/
-			if(itemList.get(z).getItemName().equals(line)){
+			if(itemList.get(z).getItemName().equals(stringInput)){
 				
 				isDuplicate = true;
 			}
@@ -51,34 +65,46 @@ public class FilterData extends SortClass {
 		return isDuplicate;
 	}
 	//check a double to see if it is negative. If negative then return true
-	public boolean checkPositive(String price) {
+	public boolean checkPositive(String stringDouble) {
 		
 		boolean isNegative = false;
 		
-		if((Double.parseDouble(price)) < 0){
+		if((Double.parseDouble(stringDouble)) < 0){
 			
 			isNegative = true;
 		}
 		
 		return isNegative;			
 	}
+	public String checkingPositive(String stringDouble) {
+		Scanner scanData = new Scanner(System.in);
+		
+		
+		while(Double.parseDouble(stringDouble) < 0) {
+			System.out.println("Please enter a value above zero:");
+			stringDouble = String.valueOf(scanData.nextLine());	
+		}
+		//scanData.close();
+		
+		return stringDouble;			
+	}
 	
 	//method to filter a string from anything but a-z and A-Z. Return filtered String.
-	public String filterStringForHash(String input) {
+	public String filterStringForHash(String stringInput) {
 		String inputProcessed = "";
 		
 		//inputProcessed = input.replaceAll("[^a-zA-Z%]","");
-		inputProcessed = input.replaceAll("[#%]","");
+		inputProcessed = stringInput.replaceAll("[#%]","");
 
 		
 		return inputProcessed;
 	}
 	
-	public String filterStringOnlyAlpha(String input) {
+	public String filterStringOnlyAlpha(String stringInput) {
 		String inputProcessed = "";
 		
 		//inputProcessed = input.replaceAll("[^a-zA-Z%]","");
-		inputProcessed = input.replaceAll("[^A-Za-z%]","");
+		inputProcessed = stringInput.replaceAll("[^A-Za-z%]","");
 
 		
 		return inputProcessed;
@@ -100,10 +126,41 @@ public class FilterData extends SortClass {
 		
 		return isDuplicatePriority;
 	}
-	public boolean checkForExit(String exitCommand) {
+	
+	/*public String checkingForInteger(String stringInput) {
+		Scanner scanData = new Scanner(System.in);
+		String poop;
+		
+		while(stringInput.getClass() == int.class) {//Make this useful for checking files too.//You were debugging your shoppingcart
+			System.out.println("Please enter an Integer:");
+			stringInput = String.valueOf(scanData.nextLine());	
+		}
+		//scanData.close();
+		
+		return stringInput;		
+	}*/
+	/*public String checkingForDouble(String stringInput) {
+		Scanner scanData = new Scanner(System.in);
 		
 		
-		if(exitCommand.equals("#")) {
+		while(!(scanData.hasNextDouble())) {
+			System.out.println("Please enter a decimal number:");
+			stringInput = scanData.nextLine();	
+		}
+		//scanData.close();
+		
+		return stringInput;		
+	}*/
+	
+	
+	
+	
+	
+	
+	public boolean checkForExit(String stringInput) {
+		
+		
+		if(stringInput.equals("#")) {
 			return true;
 		}
 		
@@ -112,10 +169,21 @@ public class FilterData extends SortClass {
 		}
 		
 	}
-	public boolean checkForDone(String doneCommand) {
+	public void checkingForExit(String stringInput) {
 		
 		
-		if(doneCommand.equals("&")) {
+		if(stringInput.equals("#")) {
+			System.out.println("Exit command detected. Exiting...");
+			System.exit(0);
+		}
+		
+		
+	}
+	
+	public boolean checkForDone(String stringInput) {
+		
+		
+		if(stringInput.equals("&")) {
 			return true;
 		}
 		
@@ -124,6 +192,7 @@ public class FilterData extends SortClass {
 		}
 		
 	}
+	
 
 
 
