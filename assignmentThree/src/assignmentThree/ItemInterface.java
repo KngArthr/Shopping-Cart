@@ -14,4 +14,12 @@ public interface ItemInterface {
 	
 	public double getPrice();
 	
+	public void setQuantity(int quantity);
+	
+	public int getQuantity();
+	
+	public void setUnit(String unit);
+	
+	public String getUnit();
+	
 }
