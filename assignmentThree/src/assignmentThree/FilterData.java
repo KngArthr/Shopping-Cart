@@ -76,6 +76,7 @@ public class FilterData extends SortClass {
 		
 		return isNegative;			
 	}
+	//Asks for new value if initial value is negative. Returns resulting positive value
 	public String checkingPositive(String stringDouble) {
 		Scanner scanData = new Scanner(System.in);
 		

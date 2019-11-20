@@ -21,14 +21,16 @@ public class MainClass {
 		String fileNameWrite = "";
 		
 		System.out.println ("Hello! Welcome to the shopping cart program!");
-		System.out.println ("Enter 0 if you would like to use an already existing list (txt file). Enter any other key if you would like to write to a txt file.");
+		System.out.println ("Enter the file name to write to. To use the provided file, just type groceryList5:");
+		fileNameWrite = scanKeyboard.nextLine();
+		System.out.println ("Enter 0 if you would like to read an already existing list (txt file). Enter any other key if you would like to read from the console:");
 		
 		//attribute for determining which program to run
 		whichProgram = scanKeyboard.nextLine();
 		
 		if(whichProgram.equals("0")) {
 			try {
-				System.out.println ("Enter the file name to read from. To use the provided file, just type groceryList2.");
+				System.out.println ("Enter the file name to read from. To use the provided file, just type groceryList2:");
 				fileNameRead = scanKeyboard.nextLine();
 				shoppingCartOne = new ShoppingCartOne(fileNameRead);
 			} catch (FileNotFoundException e) {
@@ -38,8 +40,9 @@ public class MainClass {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println ("Enter the file name to write to. To use the provided file, just type groceryList5.");
-			fileNameWrite = scanKeyboard.nextLine();
+			//scanKeyboard = new Scanner(System.in);
+			//System.out.println ("Enter the file name to write to. To use the provided file, just type groceryList5.");
+			//fileNameWrite = scanKeyboard.nextLine();
 			cashier = new Cashier(fileNameWrite, shoppingCartOne);
 			//cashier.buyItems();
 			
@@ -58,8 +61,11 @@ public class MainClass {
 
 		}else {
 			shoppingCartOne = new ShoppingCartOne();
-			System.out.println ("Enter the file name to write to. To use the provided file, just type groceryList2.");
-			fileNameWrite = scanKeyboard.nextLine();
+			
+
+			
+			
+			//fileNameWrite = scanKeyboard.nextLine();
 			cashier = new Cashier(fileNameWrite, shoppingCartOne);
 			//cashier.buyItems();
 			System.out.println(shoppingCartOne.getUserName() + "'s Shopping Cart");
