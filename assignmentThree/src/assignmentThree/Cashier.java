@@ -254,7 +254,23 @@ public class Cashier implements CashierInterface, PrintOutputInterface{
 		//this.bankAccount = String.valueOf(Double.parseDouble(bankAccount) - price;
 		
 	}
-
+	public boolean equalsMethod(ArrayList<ItemClass> itemList, String line) {
+		
+		boolean isDuplicate = false;
+		
+		for(int z = 0; z < itemList.size(); z++) {
+			/*System.out.println ("Iteration " + z);
+			System.out.println ("Previous Item Name " + itemList[z].getItemName());
+			System.out.println ("New Item Name " + line);*/
+			if(itemList.get(z).getItemName().equals(line)){
+				
+				isDuplicate = true;
+			}
+			
+				
+		}
+		return isDuplicate;
+	}
 	
 	
 }

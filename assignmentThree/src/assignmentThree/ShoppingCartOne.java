@@ -81,7 +81,7 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 			
 			
 			//take unit input
-			System.out.println("Please enter the unit in which would like to buy this item: ");
+			System.out.println("Please enter the unit in which you would like to buy this item: ");
 			itemUnit = scanData.nextLine();
 			filterData.checkingForExit(itemUnit);
 			itemUnit = filterData.filterStringOnlyAlpha(itemUnit);
@@ -265,7 +265,23 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 	}
 	
 
-
+	public boolean equalsMethod(ArrayList<ItemClass> itemList, String line) {
+		
+		boolean isDuplicate = false;
+		
+		for(int z = 0; z < itemList.size(); z++) {
+			/*System.out.println ("Iteration " + z);
+			System.out.println ("Previous Item Name " + itemList[z].getItemName());
+			System.out.println ("New Item Name " + line);*/
+			if(itemList.get(z).getItemName().equals(line)){
+				
+				isDuplicate = true;
+			}
+			
+				
+		}
+		return isDuplicate;
+	}
 	
 	
 	
