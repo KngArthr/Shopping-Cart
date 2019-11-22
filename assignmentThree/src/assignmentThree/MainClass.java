@@ -60,7 +60,12 @@ public class MainClass {
 
 
 		}else {
-			shoppingCartOne = new ShoppingCartOne();
+			try {
+				shoppingCartOne = new ShoppingCartOne();
+			} catch (UnsupportedFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 
 			

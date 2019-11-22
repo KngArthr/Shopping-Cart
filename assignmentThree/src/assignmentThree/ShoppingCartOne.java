@@ -19,7 +19,7 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 	
 	private String bankAccount;
 	
-	ShoppingCartOne(){
+	ShoppingCartOne() throws UnsupportedFormatException{
 		userName = "N/A";
 		itemList = new ArrayList<ItemClass>();
 		itemListSorted = new ArrayList<ItemClass>();
@@ -40,7 +40,7 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 		userName = filterData.filterStringForHash(scanData.nextLine());
 		
 		System.out.println("What is your budget?");
-		bankAccount = scanData.nextLine();
+		bankAccount = filterData.checkingPositive(scanData.nextLine());
 		
 		while(true) {
 			
@@ -85,6 +85,7 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 			itemUnit = scanData.nextLine();
 			filterData.checkingForExit(itemUnit);
 			itemUnit = filterData.filterStringOnlyAlpha(itemUnit);
+	
 			
 			//System.out.println ("Slot " + (i + 1) + " contains item: " + itemName + " priority: " + itemPriority + " price: " + itemPrice);
 			itemList.add(new ItemClass(itemName, Integer.parseInt(itemPriority), Double.parseDouble(itemPrice), Integer.parseInt(itemQuantity), itemUnit));
@@ -139,18 +140,24 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 		
 		int itemCounter = 0;
 		Scanner scanFile = new Scanner(this.shoppingListFile);
+		Scanner scanData = new Scanner(System.in);
 		
-		userName = filterData.filterStringForHash(scanFile.nextLine());
+		System.out.println("What is your name? Don't use #");
 
-		bankAccount = scanFile.nextLine();
+		//userName = filterData.filterStringForHash(scanFile.nextLine());
+		userName = filterData.filterStringForHash(scanData.nextLine());
+		
+		System.out.println("What is your budget: ");
 
+		//bankAccount = scanFile.nextLine();
+		bankAccount = filterData.checkingPositive(scanData.nextLine());
 		
 		while(scanFile.hasNextLine()) {
 			
 			itemName = scanFile.nextLine();
 			filterData.checkingForExit(itemName);
 			//check item for duplicates and prompt for new entry until a unique item name is entered
-			itemName = filterData.checkItemDuplicate(itemList, itemName, itemCounter);
+			itemName = filterData.itemDuplicateExit(itemList, itemName, itemCounter);
 
 			
 			//take priority input
@@ -164,7 +171,10 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 			itemPrice = scanFile.nextLine();
 			filterData.checkingForExit(itemPrice);
 			//itemPrice = filterData.checkingForDouble(itemPrice);
-			itemPrice = filterData.checkingPositive(itemPrice);		
+			if(filterData.checkPositive(itemPrice)){
+				throw new UnsupportedFormatException("A number below 0 is not accepted.");
+			}
+				
 			
 
 			//take quantity input
@@ -172,12 +182,15 @@ public class ShoppingCartOne implements ShoppingCartInterface{
 			filterData.checkingForExit(itemQuantity);
 			//itemQuantity = filterData.checkingForInteger(itemQuantity);
 			itemQuantity = filterData.checkingPositive(itemQuantity);		
-
+			if(filterData.checkPositive(itemQuantity)){
+				throw new UnsupportedFormatException("A number below 0 is not accepted.");
+			}
 			
 			//take unit input
 			itemUnit = scanFile.nextLine();
 			filterData.checkingForExit(itemUnit);
 			itemUnit = filterData.filterStringOnlyAlpha(itemUnit);
+		
 			
 			
 			
