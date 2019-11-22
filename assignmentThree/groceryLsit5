@@ -1,5 +1,5 @@
 Abby's Shopping Cart
-You have $123.56 in the bank.
+You have $123.75 in the bank.
 Item List:
 Slot 1 contains item: Tomato priority: 8 price: 10.43 quantity: 2 lbs
 Slot 2 contains item: Toilet Paper priority: 7 price: 3.0 quantity: 5 lb
@@ -17,4 +17,4 @@ Slot 1 contains item: Rice priority: 7 price: 9345.6 quantity: 1 lb
 Slot 2 contains item: Lasagna priority: 6 price: 6.99478 quantity: 2 Boxes
 Slot 3 contains item: Avocado priority: 1 price: 76.93 quantity: 1 lb
 Slot 4 contains item: Samosa priority: -3 price: 34.25 quantity: 1 Piece
-Bank Account Post-Shopping: 6.1
+Bank Account Post-Shopping: 6.29

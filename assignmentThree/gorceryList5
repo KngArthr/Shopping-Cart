@@ -1,0 +1,10 @@
+Abby's Shopping Cart
+You have $123 in the bank.
+Item List:
+Slot 1 contains item: samosa priority: 45 price: 4.99 quantity: 5 lbs
+Slot 2 contains item: toilet priority: -3 price: 5.0 quantity: 7 
+Items Bought:
+Slot 1 contains item: samosa priority: 45 price: 4.99 quantity: 5 lbs
+Slot 2 contains item: toilet priority: -3 price: 5.0 quantity: 7 
+Items Remaining:
+Bank Account Post-Shopping: 63.05

@@ -44,6 +44,21 @@ public class FilterData extends SortClass {
 		}
 		return stringInput;
 	}
+	public String itemDuplicateExit(ArrayList<ItemClass> itemList, String stringInput, int slot) {
+		for(int z = 0; z < itemList.size(); z++) {
+			/*System.out.println ("Iteration " + z);
+			System.out.println ("Previous Item Name " + itemList[z].getItemName());
+			System.out.println ("New Item Name " + line);*/
+			if(itemList.get(z).getItemName().equals(stringInput)){
+				System.out.println("There appears to be a duplicate item. Please re-create your text file. System will now Exit....");
+
+				System.exit(0);
+			}
+	
+		}
+		return stringInput;
+
+	}
 	
 	
 	public boolean checkDuplicate(ArrayList<ItemClass> itemList, String stringInput) {
@@ -80,7 +95,6 @@ public class FilterData extends SortClass {
 	public String checkingPositive(String stringDouble) {
 		Scanner scanData = new Scanner(System.in);
 		
-		
 		while(Double.parseDouble(stringDouble) < 0) {
 			System.out.println("Please enter a value above zero:");
 			stringDouble = String.valueOf(scanData.nextLine());	
@@ -95,7 +109,7 @@ public class FilterData extends SortClass {
 		String inputProcessed = "";
 		
 		//inputProcessed = input.replaceAll("[^a-zA-Z%]","");
-		inputProcessed = stringInput.replaceAll("[#%]","");
+		inputProcessed = stringInput.replaceAll("[#]","");
 
 		
 		return inputProcessed;
@@ -105,10 +119,25 @@ public class FilterData extends SortClass {
 		String inputProcessed = "";
 		
 		//inputProcessed = input.replaceAll("[^a-zA-Z%]","");
-		inputProcessed = stringInput.replaceAll("[^A-Za-z%]","");
+		inputProcessed = stringInput.replaceAll("[^A-Za-z]","");
 
 		
 		return inputProcessed;
+	}
+	public boolean checkStringOnlyAlpha(String stringInput) {
+		
+		//inputProcessed = input.replaceAll("[^a-zA-Z%]","");
+		/*if(stringInput.indexOf("%[^a- zA-Z]%") > -1) {
+			return true;
+		}*/
+		if(stringInput.matches("[a-zA-Z]")) {
+			return true;
+		}else {
+			return false;
+
+		}
+
+		
 	}
 	
 	//Method to check for duplicate priority
